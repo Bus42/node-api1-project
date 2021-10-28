@@ -30,7 +30,8 @@ const EditUser = ({ user, setEditing, setUsers }) => {
         setEditing(false);
       });
   };
-  const handleDeleteClick = () => {
+  const handleDeleteClick = (e) => {
+    e.preventDefault();
     axios
       .delete(`${BASE_URL}/${user.id}`)
       .then(res => {
