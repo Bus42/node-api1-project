@@ -1,7 +1,7 @@
 import React from 'react';
 import User from './User';
 
-const UsersList = ({ loading, users }) => {
+const UsersList = ({ loading, users, setUsers }) => {
   return (
     <>
       <h2>Users</h2>
@@ -10,7 +10,7 @@ const UsersList = ({ loading, users }) => {
       ) : (
         <ul>
           {users.map(user => (
-            <User key={user.id} user={user} />
+            <User key={user.id} user={user} setUsers={setUsers} />
           ))}
         </ul>
       )}

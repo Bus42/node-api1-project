@@ -38,7 +38,7 @@ const App = () => {
             <AddUser setUsers={setUsers} />
           </Route>
           <Route path="/">
-            <UsersList loading={loading} users={users} />
+            <UsersList loading={loading} users={users} setUsers={setUsers} />
           </Route>
         </Switch>
       </div>
