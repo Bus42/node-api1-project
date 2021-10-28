@@ -34,13 +34,16 @@ const EditUser = ({ user, setEditing, setUsers }) => {
     axios
       .delete(`${BASE_URL}/${user.id}`)
       .then(res => {
-        console.log('user updated: ', res.data);
+        console.log('user deleted: ', res.data);
+        axios
+          .get(BASE_URL)
+          .then(res => setUsers(res.data))
+          .catch(err => console.error(err.message));
       })
       .catch(err => {
         console.error(err.message);
       })
       .finally(() => {
-        window.location.reload();
         setEditing(false);
       });
   };
