@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import User from './components/User';
+import { BASE_URL } from './data';
 
 const App = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  
+
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:4280/api/users')
+      .get(BASE_URL)
       .then(res => {
         setUsers(res.data);
       })
       .catch(err => {
-        console.error(err);
+        console.error(err.message);
       })
       .finally(() => {
         setLoading(false);
@@ -29,10 +31,7 @@ const App = () => {
       ) : (
         <ul>
           {users.map(user => (
-            <li key={user.id}>
-              <h2>{user.name}</h2>
-              <p>{user.bio}</p>
-            </li>
+            <User key={user.id} user={user} setUsers={setUsers} />
           ))}
         </ul>
       )}
