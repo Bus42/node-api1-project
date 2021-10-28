@@ -18,11 +18,25 @@ const EditUser = ({ user, setEditing, setUsers }) => {
       .put(`${BASE_URL}/${user.id}`, formValues)
       .then(res => {
         console.log('user updated: ', res.data);
-    })
-    .catch(err => {
+      })
+      .catch(err => {
         console.error(err.message);
-    })
-    .finally(() => {
+      })
+      .finally(() => {
+        window.location.reload();
+        setEditing(false);
+      });
+  };
+  const handleDeleteClick = () => {
+    axios
+      .delete(`${BASE_URL}/${user.id}`)
+      .then(res => {
+        console.log('user updated: ', res.data);
+      })
+      .catch(err => {
+        console.error(err.message);
+      })
+      .finally(() => {
         window.location.reload();
         setEditing(false);
       });
@@ -50,6 +64,7 @@ const EditUser = ({ user, setEditing, setUsers }) => {
         />
       </label>
       <button type="submit">Submit</button>
+      <button onClick={handleDeleteClick}>Delete user</button>
     </form>
   );
 };
