@@ -17,11 +17,32 @@ const User = ({ user, setUsers }) => {
     //   <p>{user.bio}</p>
     //   <button onClick={handleEditClick}>Edit</button>
     // </>
-    <Box maxW="sm" borderWidth="1px" mx={1} my={2} p={1} bg="blue.300" textColor="white" borderRadius="lg" overflow="hidden">
-      <Heading textAlign="center" as="h3">{user.name}</Heading>
-      <Text mx={1} my={2} >{user.bio}</Text>
+    <Box
+      minW="400px"
+      maxW="sm"
+      borderWidth="1px"
+      mx={1}
+      my={2}
+      p={1}
+      bg="blue.300"
+      textColor="white"
+      borderRadius="lg"
+      overflow="hidden"
+    >
+      <Heading textAlign="center" as="h3">
+        {user.name}
+      </Heading>
+      <Text mx={1} my={2}>
+        {user.bio}
+      </Text>
       <Flex align="center" justify="flex-end">
-        <Button bg="blue.200" _hover={{bg: "white", color: "tomato"}} onClick={handleEditClick}>Edit</Button>
+        <Button
+          bg="blue.200"
+          _hover={{ bg: 'white', color: 'tomato' }}
+          onClick={handleEditClick}
+        >
+          Edit
+        </Button>
       </Flex>
     </Box>
   );

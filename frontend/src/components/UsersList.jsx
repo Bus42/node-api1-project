@@ -19,11 +19,11 @@ const UsersList = ({ loading, users, setUsers }) => {
           />
         </Flex>
       ) : (
-        <>
+        <Flex flexDirection="column" align="center" justifyContent="flex-start">
           {users.map(user => (
             <User key={user.id} user={user} setUsers={setUsers} />
           ))}
-        </>
+        </Flex>
       )}
     </>
   );
