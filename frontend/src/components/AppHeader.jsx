@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { chakra, Flex, Box } from '@chakra-ui/react';
+import { chakra, Flex, Box, Button, Heading } from '@chakra-ui/react';
 
 const AppHeader = () => {
   return (
     <chakra.header>
       <Flex align="center" justify="space-between">
         <Box textAlign="center" w="80%">
-          <chakra.h1 fontSize={32}>Node API 1 Project</chakra.h1>
+          <Heading as="h1" fontSize={32}>Node API 1 Project</Heading>
         </Box>
         <Link to="/adduser">
-          <chakra.button
+          <Button
             mr="2"
             px="3"
             py="2"
@@ -19,7 +19,7 @@ const AppHeader = () => {
             _hover={{ bg: 'green.300' }}
           >
             Add User
-          </chakra.button>
+          </Button>
         </Link>
       </Flex>
     </chakra.header>

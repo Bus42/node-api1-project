@@ -1,13 +1,13 @@
-import { Spinner, chakra, Flex } from '@chakra-ui/react';
+import { Spinner, Heading, Flex } from '@chakra-ui/react';
 import React from 'react';
 import User from './User';
 
 const UsersList = ({ loading, users, setUsers }) => {
   return (
     <>
-      <chakra.h2 fontSize="24" ml={2}>
+      <Heading as="h2" fontSize="24" ml={2}>
         Users
-      </chakra.h2>
+      </Heading>
       {loading ? (
         <Flex align="center" justify="center">
           <Spinner
