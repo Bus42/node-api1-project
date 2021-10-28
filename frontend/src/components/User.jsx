@@ -12,11 +12,6 @@ const User = ({ user, setUsers }) => {
   return editing ? (
     <EditUser user={user} setEditing={setEditing} setUsers={setUsers} />
   ) : (
-    // <>
-    //   <h2>{user.name}</h2>
-    //   <p>{user.bio}</p>
-    //   <button onClick={handleEditClick}>Edit</button>
-    // </>
     <Box
       minW="400px"
       maxW="sm"

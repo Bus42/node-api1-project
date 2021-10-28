@@ -4,7 +4,7 @@ import { chakra, Flex, Box, Button, Heading } from '@chakra-ui/react';
 
 const AppHeader = () => {
   return (
-    <chakra.header>
+    <chakra.header mt={2} mb={4} >
       <Flex align="center" justify="space-between">
         <Box textAlign="center" w="80%">
           <Heading as="h1" fontSize={32}>Node API 1 Project</Heading>

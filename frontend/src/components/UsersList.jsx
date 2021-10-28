@@ -5,7 +5,7 @@ import User from './User';
 const UsersList = ({ loading, users, setUsers }) => {
   return (
     <>
-      <Heading as="h2" fontSize="24" ml={2}>
+      <Heading textAlign="center" as="h2" fontSize="24" ml={2}>
         Users
       </Heading>
       {loading ? (
