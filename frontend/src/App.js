@@ -13,17 +13,19 @@ const App = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(BASE_URL)
-      .then(res => {
-        setUsers(res.data);
-      })
-      .catch(err => {
-        console.error(err.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    setTimeout(() => {
+      axios
+        .get(BASE_URL)
+        .then(res => {
+          setUsers(res.data);
+        })
+        .catch(err => {
+          console.error(err.message);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }, 1000);
   }, []);
 
   return (

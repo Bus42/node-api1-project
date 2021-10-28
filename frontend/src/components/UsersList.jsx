@@ -1,18 +1,29 @@
+import { Spinner, chakra, Flex } from '@chakra-ui/react';
 import React from 'react';
 import User from './User';
 
 const UsersList = ({ loading, users, setUsers }) => {
   return (
     <>
-      <h2>Users</h2>
+      <chakra.h2 fontSize="24" ml={2}>
+        Users
+      </chakra.h2>
       {loading ? (
-        <div className="loading">...loading</div>
+        <Flex align="center" justify="center">
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+          />
+        </Flex>
       ) : (
-        <ul>
+        <>
           {users.map(user => (
             <User key={user.id} user={user} setUsers={setUsers} />
           ))}
-        </ul>
+        </>
       )}
     </>
   );
