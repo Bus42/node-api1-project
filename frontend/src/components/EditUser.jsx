@@ -5,7 +5,6 @@ import {
   FormLabel,
   Box,
   Input,
-  Flex,
   Button,
   ButtonGroup,
 } from '@chakra-ui/react';
@@ -80,7 +79,7 @@ const EditUser = ({ user, setEditing, setUsers }) => {
     >
       <form action="submit" onSubmit={handleSubmit}>
         <FormLabel w="100%" htmlFor="name" textAlign="right">
-          Edit name
+          Edit Name
           <Input
             type="text"
             name="name"
@@ -90,7 +89,7 @@ const EditUser = ({ user, setEditing, setUsers }) => {
           />
         </FormLabel>
         <FormLabel w="100%" htmlFor="bio" textAlign="right">
-          Edit bio
+          Edit Bio
           <Input
             type="text"
             name="bio"

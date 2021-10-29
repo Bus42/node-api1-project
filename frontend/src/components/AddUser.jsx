@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import axios from 'axios';
 import { BASE_URL } from '../data';
+import {
+  FormLabel,
+  Box,
+  Input,
+  Button,
+  ButtonGroup,
+  Flex,
+} from '@chakra-ui/react';
 
 const AddUser = ({ setUsers }) => {
   const { push } = useHistory();
@@ -32,30 +40,60 @@ const AddUser = ({ setUsers }) => {
         push('/');
       });
   };
+  const handleCancelClick = e => {
+    e.preventDefault();
+    setFormValues(initialFormValues);
+  };
   return (
-    <form action="submit" onSubmit={handleSubmit}>
-      <label htmlFor="name">
-        User name
-        <input
-          type="text"
-          name="name"
-          placeholder={formValues.name}
-          value={formValues.name}
-          onChange={handleChange}
-        />
-      </label>
-      <label htmlFor="bio">
-        User bio
-        <input
-          type="text"
-          name="bio"
-          placeholder={formValues.bio}
-          value={formValues.bio}
-          onChange={handleChange}
-        />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+    <Flex flexDirection="column" align="center" justifyContent="flex-start">
+      <Box
+        minW="400px"
+        maxW="sm"
+        borderWidth="1px"
+        mx={1}
+        my={2}
+        p={1}
+        pb={2}
+        bg="gray.500"
+        textColor="white"
+        borderRadius="lg"
+        overflow="hidden"
+        display="flex"
+        flexDir="column"
+        alignItems="center"
+      >
+        <form action="submit" onSubmit={handleSubmit}>
+          <FormLabel w="100%" htmlFor="name" textAlign="right">
+            Hero Name
+            <Input
+              type="text"
+              name="name"
+              placeholder={formValues.name}
+              value={formValues.name}
+              onChange={handleChange}
+            />
+          </FormLabel>
+          <FormLabel w="100%" htmlFor="bio" textAlign="right">
+            Add Bio
+            <Input
+              type="text"
+              name="bio"
+              placeholder={formValues.bio}
+              value={formValues.bio}
+              onChange={handleChange}
+            />
+          </FormLabel>
+          <ButtonGroup display="flex" justifyContent="space-between">
+            <Button variant="outline" type="submit">
+              Submit
+            </Button>
+            <Button variant="outline" onClick={handleCancelClick}>
+              Cancel
+            </Button>
+          </ButtonGroup>
+        </form>
+      </Box>
+    </Flex>
   );
 };
 
