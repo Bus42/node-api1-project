@@ -19,7 +19,7 @@ const User = ({ user, setUsers }) => {
       mx={1}
       my={2}
       p={1}
-      bg="blue.300"
+      bg="gray.500"
       textColor="white"
       borderRadius="lg"
       overflow="hidden"
@@ -32,8 +32,8 @@ const User = ({ user, setUsers }) => {
       </Text>
       <Flex align="center" justify="flex-end">
         <Button
-          bg="blue.200"
-          _hover={{ bg: 'white', color: 'tomato' }}
+          bg="gray.500"
+          _hover={{ bg: 'gray.600' }}
           onClick={handleEditClick}
         >
           Edit

@@ -1,11 +1,11 @@
-import { Spinner, Heading, Flex } from '@chakra-ui/react';
+import { Spinner, Heading, Flex, Box } from '@chakra-ui/react';
 import React from 'react';
 import User from './User';
 
 const UsersList = ({ loading, users, setUsers }) => {
   return (
-    <>
-      <Heading textAlign="center" as="h2" fontSize="24" ml={2}>
+    <Box>
+      <Heading textAlign="center" as="h2" p={4} fontSize="24" bg={'gray.500'} color={"white"} >
         Users
       </Heading>
       {loading ? (
@@ -25,7 +25,7 @@ const UsersList = ({ loading, users, setUsers }) => {
           ))}
         </Flex>
       )}
-    </>
+    </Box>
   );
 };
 

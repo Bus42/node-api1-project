@@ -4,7 +4,7 @@ import axios from 'axios';
 import { BASE_URL } from './data';
 import UsersList from './components/UsersList';
 import AddUser from './components/AddUser';
-import { ChakraProvider } from '@chakra-ui/react';
+import { Box, ChakraProvider } from '@chakra-ui/react';
 import AppHeader from './components/AppHeader';
 
 const App = () => {
@@ -29,9 +29,9 @@ const App = () => {
   }, []);
 
   return (
-    <div data-testid="app-wrapper">
-      <Router>
-        <ChakraProvider>
+    <Router>
+      <ChakraProvider>
+        <Box bg={"gray.400"} minHeight="100vh" >
           <AppHeader />
           <Switch>
             <Route path="/addUser">
@@ -41,9 +41,9 @@ const App = () => {
               <UsersList loading={loading} users={users} setUsers={setUsers} />
             </Route>
           </Switch>
-        </ChakraProvider>
-      </Router>
-    </div>
+        </Box>
+      </ChakraProvider>
+    </Router>
   );
 };
 
