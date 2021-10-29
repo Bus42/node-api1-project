@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { BASE_URL } from '../data';
 import {
-  // FormControl,
   FormLabel,
-  // FormHelperText,
-  Input
-} from "@chakra-ui/react"
+  Box,
+  Input,
+  Flex,
+  Button,
+  ButtonGroup,
+} from '@chakra-ui/react';
 
 const EditUser = ({ user, setEditing, setUsers }) => {
   const initialFormValues = {
@@ -36,7 +38,7 @@ const EditUser = ({ user, setEditing, setUsers }) => {
         setEditing(false);
       });
   };
-  const handleDeleteClick = (e) => {
+  const handleDeleteClick = e => {
     e.preventDefault();
     axios
       .delete(`${BASE_URL}/${user.id}`)
@@ -54,31 +56,56 @@ const EditUser = ({ user, setEditing, setUsers }) => {
         setEditing(false);
       });
   };
+  const handleCancelClick = e => {
+    e.preventDefault();
+    setFormValues(initialFormValues);
+    setEditing(false);
+  };
   return (
-    <form action="submit" onSubmit={handleSubmit}>
-      <FormLabel htmlFor="name">
-        Edit name
-        <Input
-          type="text"
-          name="name"
-          placeholder={formValues.name}
-          value={formValues.name}
-          onChange={handleChange}
-        />
-      </FormLabel>
-      <FormLabel htmlFor="bio">
-        Edit bio
-        <Input
-          type="text"
-          name="bio"
-          placeholder={formValues.bio}
-          value={formValues.bio}
-          onChange={handleChange}
-        />
-      </FormLabel>
-      <button type="submit">Submit</button>
-      <button onClick={handleDeleteClick}>Delete user</button>
-    </form>
+    <Box
+      minW="400px"
+      maxW="sm"
+      borderWidth="1px"
+      mx={1}
+      my={2}
+      p={1}
+      pb={2}
+      bg="gray.500"
+      textColor="white"
+      borderRadius="lg"
+      overflow="hidden"
+      display="flex"
+      flexDir="column"
+      alignItems="center"
+    >
+      <form action="submit" onSubmit={handleSubmit}>
+        <FormLabel w="100%" htmlFor="name" textAlign="right">
+          Edit name
+          <Input
+            type="text"
+            name="name"
+            placeholder={formValues.name}
+            value={formValues.name}
+            onChange={handleChange}
+          />
+        </FormLabel>
+        <FormLabel w="100%" htmlFor="bio" textAlign="right">
+          Edit bio
+          <Input
+            type="text"
+            name="bio"
+            placeholder={formValues.bio}
+            value={formValues.bio}
+            onChange={handleChange}
+          />
+        </FormLabel>
+        <ButtonGroup display="flex" justifyContent="space-between" >
+          <Button variant="outline" type="submit">Submit</Button>
+          <Button variant="outline" onClick={handleCancelClick}>Cancel</Button>
+          <Button variant="outline" onClick={handleDeleteClick}>Delete</Button>
+        </ButtonGroup>
+      </form>
+    </Box>
   );
 };
 
