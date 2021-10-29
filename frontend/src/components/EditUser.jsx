@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { BASE_URL } from '../data';
+import {
+  // FormControl,
+  FormLabel,
+  // FormHelperText,
+  Input
+} from "@chakra-ui/react"
 
 const EditUser = ({ user, setEditing, setUsers }) => {
   const initialFormValues = {
@@ -50,26 +56,26 @@ const EditUser = ({ user, setEditing, setUsers }) => {
   };
   return (
     <form action="submit" onSubmit={handleSubmit}>
-      <label htmlFor="name">
+      <FormLabel htmlFor="name">
         Edit name
-        <input
+        <Input
           type="text"
           name="name"
           placeholder={formValues.name}
           value={formValues.name}
           onChange={handleChange}
         />
-      </label>
-      <label htmlFor="bio">
+      </FormLabel>
+      <FormLabel htmlFor="bio">
         Edit bio
-        <input
+        <Input
           type="text"
           name="bio"
           placeholder={formValues.bio}
           value={formValues.bio}
           onChange={handleChange}
         />
-      </label>
+      </FormLabel>
       <button type="submit">Submit</button>
       <button onClick={handleDeleteClick}>Delete user</button>
     </form>
