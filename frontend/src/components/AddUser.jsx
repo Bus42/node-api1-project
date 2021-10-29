@@ -10,6 +10,7 @@ import {
   ButtonGroup,
   Flex,
   Textarea,
+  FormErrorMessage,
 } from '@chakra-ui/react';
 
 const AddUser = ({ setUsers }) => {
@@ -17,6 +18,7 @@ const AddUser = ({ setUsers }) => {
   const initialFormValues = {
     name: '',
     bio: '',
+    errors: [],
   };
   const [formValues, setFormValues] = useState(initialFormValues);
   const handleChange = ({ target }) => {
@@ -24,6 +26,21 @@ const AddUser = ({ setUsers }) => {
     setFormValues({ ...formValues, [name]: value });
   };
   const handleSubmit = e => {
+    if (!formValues.name) {
+      setFormValues({
+        ...formValues,
+        errors: [...formValues.errors, "Please enter your hero's name"],
+      });
+    }
+    if (!formValues.bio) {
+      setFormValues({
+        ...formValues,
+        errors: [
+          ...formValues.errors,
+          'Please enter a short bio for your hero',
+        ],
+      });
+    }
     e.preventDefault();
     axios
       .post(`${BASE_URL}`, formValues)
@@ -67,6 +84,7 @@ const AddUser = ({ setUsers }) => {
           <FormLabel w="100%" htmlFor="name" textAlign="right">
             Hero Name
             <Input
+              isRequired
               type="text"
               name="name"
               placeholder={formValues.name}
@@ -77,6 +95,7 @@ const AddUser = ({ setUsers }) => {
           <FormLabel w="100%" htmlFor="bio" textAlign="right">
             Add Bio
             <Textarea
+              isRequired
               name="bio"
               placeholder={formValues.bio}
               value={formValues.bio}
@@ -84,13 +103,21 @@ const AddUser = ({ setUsers }) => {
             />
           </FormLabel>
           <ButtonGroup display="flex" justifyContent="space-between">
-            <Button variant="outline" type="submit">
+            <Button
+              variant="outline"
+              type="submit"
+              disabled={formValues === initialFormValues}
+            >
               Submit
             </Button>
             <Button variant="outline" onClick={handleCancelClick}>
               Cancel
             </Button>
           </ButtonGroup>
+          {formValues.errors.length > 0 &&
+            formValues.errors.map((error, index) => (
+              <FormErrorMessage key={index}>{error}</FormErrorMessage>
+            ))}
         </form>
       </Box>
     </Flex>
