@@ -9,6 +9,7 @@ import {
   Button,
   ButtonGroup,
   Flex,
+  Textarea,
 } from '@chakra-ui/react';
 
 const AddUser = ({ setUsers }) => {
@@ -27,7 +28,6 @@ const AddUser = ({ setUsers }) => {
     axios
       .post(`${BASE_URL}`, formValues)
       .then(res => {
-        console.log('user added: ', res.data);
         axios
           .get(BASE_URL)
           .then(res => setUsers(res.data))
@@ -43,6 +43,7 @@ const AddUser = ({ setUsers }) => {
   const handleCancelClick = e => {
     e.preventDefault();
     setFormValues(initialFormValues);
+    push('/');
   };
   return (
     <Flex flexDirection="column" align="center" justifyContent="flex-start">
@@ -75,8 +76,7 @@ const AddUser = ({ setUsers }) => {
           </FormLabel>
           <FormLabel w="100%" htmlFor="bio" textAlign="right">
             Add Bio
-            <Input
-              type="text"
+            <Textarea
               name="bio"
               placeholder={formValues.bio}
               value={formValues.bio}

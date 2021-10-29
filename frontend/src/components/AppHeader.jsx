@@ -20,7 +20,7 @@ const AppHeader = () => {
             rounded="md"
             _hover={{ bg: 'gray.700' }}
           >
-            Add User
+            Add Hero
           </Button>
         </Link>
       </Flex>

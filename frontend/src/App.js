@@ -32,7 +32,7 @@ const App = () => {
   return (
     <Router>
       <ChakraProvider>
-        <Box bg={'gray.400'} minHeight="90vh">
+        <Box bg={'gray.400'} minHeight="100vh">
           <AppHeader />
           <Switch>
             <Route path="/addUser">

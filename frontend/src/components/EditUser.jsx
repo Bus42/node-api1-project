@@ -7,6 +7,7 @@ import {
   Input,
   Button,
   ButtonGroup,
+  Textarea,
 } from '@chakra-ui/react';
 
 const EditUser = ({ user, setEditing, setUsers }) => {
@@ -90,18 +91,28 @@ const EditUser = ({ user, setEditing, setUsers }) => {
         </FormLabel>
         <FormLabel w="100%" htmlFor="bio" textAlign="right">
           Edit Bio
-          <Input
-            type="text"
+          <Textarea
             name="bio"
             placeholder={formValues.bio}
             value={formValues.bio}
             onChange={handleChange}
           />
         </FormLabel>
-        <ButtonGroup display="flex" justifyContent="space-between" >
-          <Button variant="outline" type="submit">Submit</Button>
-          <Button variant="outline" onClick={handleCancelClick}>Cancel</Button>
-          <Button variant="outline" onClick={handleDeleteClick}>Delete</Button>
+        <ButtonGroup display="flex" justifyContent="space-between">
+          <Button
+            variant="outline"
+            type="submit"
+            disabled={formValues === initialFormValues}
+            
+          >
+            Submit
+          </Button>
+          <Button variant="outline" onClick={handleCancelClick}>
+            Cancel
+          </Button>
+          <Button variant="outline" onClick={handleDeleteClick}>
+            Delete
+          </Button>
         </ButtonGroup>
       </form>
     </Box>

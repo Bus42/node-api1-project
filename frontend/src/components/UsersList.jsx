@@ -6,7 +6,7 @@ const UsersList = ({ loading, users, setUsers }) => {
   return (
     <Box>
       <Heading textAlign="center" as="h2" p={4} fontSize="24" bg={'gray.500'} color={"white"} >
-        Users
+        Heroes
       </Heading>
       {loading ? (
         <Flex align="center" justify="center">
