@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import EditUser from './EditUser';
-import { Box, Heading, Text, Flex, Button } from '@chakra-ui/react';
+import { Box, Heading, Text, Flex, Button, Divider } from '@chakra-ui/react';
 import OutsideClickHandler from 'react-outside-click-handler';
 
 const User = ({ user, setUsers }) => {
@@ -37,6 +37,7 @@ const User = ({ user, setUsers }) => {
       <Text mx={1} my={2}>
         {user.bio}
       </Text>
+      <Divider />
       <Flex align="center" justify="flex-end">
         <Button
           bg="gray.500"
