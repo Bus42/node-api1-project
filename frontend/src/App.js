@@ -6,6 +6,7 @@ import UsersList from './components/UsersList';
 import AddUser from './components/AddUser';
 import { Box, ChakraProvider } from '@chakra-ui/react';
 import AppHeader from './components/AppHeader';
+import AppFooter from './components/AppFooter';
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -31,7 +32,7 @@ const App = () => {
   return (
     <Router>
       <ChakraProvider>
-        <Box bg={"gray.400"} minHeight="100vh" >
+        <Box bg={'gray.400'} minHeight="90vh">
           <AppHeader />
           <Switch>
             <Route path="/addUser">
@@ -42,6 +43,7 @@ const App = () => {
             </Route>
           </Switch>
         </Box>
+        <AppFooter />
       </ChakraProvider>
     </Router>
   );
