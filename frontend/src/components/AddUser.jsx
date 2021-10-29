@@ -10,7 +10,6 @@ import {
   ButtonGroup,
   Flex,
   Textarea,
-  FormErrorMessage,
 } from '@chakra-ui/react';
 
 const AddUser = ({ setUsers }) => {
@@ -26,21 +25,6 @@ const AddUser = ({ setUsers }) => {
     setFormValues({ ...formValues, [name]: value });
   };
   const handleSubmit = e => {
-    if (!formValues.name) {
-      setFormValues({
-        ...formValues,
-        errors: [...formValues.errors, "Please enter your hero's name"],
-      });
-    }
-    if (!formValues.bio) {
-      setFormValues({
-        ...formValues,
-        errors: [
-          ...formValues.errors,
-          'Please enter a short bio for your hero',
-        ],
-      });
-    }
     e.preventDefault();
     axios
       .post(`${BASE_URL}`, formValues)
@@ -114,10 +98,6 @@ const AddUser = ({ setUsers }) => {
               Cancel
             </Button>
           </ButtonGroup>
-          {formValues.errors.length > 0 &&
-            formValues.errors.map((error, index) => (
-              <FormErrorMessage key={index}>{error}</FormErrorMessage>
-            ))}
         </form>
       </Box>
     </Flex>

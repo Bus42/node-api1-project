@@ -1,11 +1,12 @@
-const express = require("express");
-const server = express();
-const model = require("./users/model");
 require("colors");
+const express = require("express");
+const model = require("./users/model");
 const cors = require("cors");
 
+const server = express();
+
 server.use(express.json());
-server.use(cors())
+server.use(cors());
 
 server.post("/api/users", (req, res) => {
   if (!req.body.name || !req.body.bio) {

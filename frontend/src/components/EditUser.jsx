@@ -14,6 +14,7 @@ const EditUser = ({ user, setEditing, setUsers }) => {
   const initialFormValues = {
     name: user.name,
     bio: user.bio,
+    errors: [],
   };
   const [formValues, setFormValues] = useState(initialFormValues);
   const handleChange = ({ target }) => {
@@ -82,6 +83,7 @@ const EditUser = ({ user, setEditing, setUsers }) => {
         <FormLabel w="100%" htmlFor="name" textAlign="right">
           Edit Name
           <Input
+            isRequired
             type="text"
             name="name"
             placeholder={formValues.name}
@@ -92,6 +94,7 @@ const EditUser = ({ user, setEditing, setUsers }) => {
         <FormLabel w="100%" htmlFor="bio" textAlign="right">
           Edit Bio
           <Textarea
+            isRequired
             name="bio"
             placeholder={formValues.bio}
             value={formValues.bio}
@@ -103,7 +106,6 @@ const EditUser = ({ user, setEditing, setUsers }) => {
             variant="outline"
             type="submit"
             disabled={formValues === initialFormValues}
-            
           >
             Submit
           </Button>
