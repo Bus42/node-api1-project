@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import EditUser from './EditUser';
 import { Box, Heading, Text, Flex, Button } from '@chakra-ui/react';
+import OutsideClickHandler from 'react-outside-click-handler';
 
 const User = ({ user, setUsers }) => {
   const [editing, setEditing] = useState(false);
@@ -9,8 +10,14 @@ const User = ({ user, setUsers }) => {
     setEditing(true);
   };
 
+  const handleOutsideClick = () => {
+    setEditing(false);
+  };
+
   return editing ? (
-    <EditUser user={user} setEditing={setEditing} setUsers={setUsers} />
+    <OutsideClickHandler onOutsideClick={handleOutsideClick}>
+      <EditUser user={user} setEditing={setEditing} setUsers={setUsers} />
+    </OutsideClickHandler>
   ) : (
     <Box
       minW="400px"
